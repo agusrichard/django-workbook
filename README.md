@@ -1,3 +1,3 @@
-# django-mini-projects
+# django-workbook
 
 Learning Web Development with Django
