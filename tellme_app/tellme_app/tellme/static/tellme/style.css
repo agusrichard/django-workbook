@@ -7,7 +7,7 @@ body {
   justify-content: center;
 }
 
-
+/* =============== Layout =============== */
 .container {
   background-color: #fff;
   width: 60%;
@@ -32,12 +32,17 @@ body {
   transition: 0.35s ease;
 }
 
+.navbar li.active {
+  background-color: blueviolet;
+}
+
 .navbar li:hover {
   background-color: blueviolet;
 }
 
-.navbar li a {
+.navbar a {
   color: white;
+  text-decoration: none;
 }
 
 .navbar-left {
@@ -54,6 +59,41 @@ body {
 }
 
 .content {
-  display: flex;
-  padding: 10px;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.content form {
+  margin-top: 30px;
+}
+
+
+.header-title {
+  text-align: center;
+  margin: 0;
+}
+
+.text-input {
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border-style: solid;
+  font-size: 18px;
+}
+
+.submit-btn {
+  margin-top: 50px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  border-width: 0;
+  background-color: coral;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.25s ease-in;
+}
+
+.submit-btn:hover {
+  background-color: blueviolet;
 }

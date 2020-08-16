@@ -1,0 +1,17 @@
+{% extends "tellme/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <h1 class="header-title">Login</h1>
+  <form action="{% url 'tellme:login' %}" method="POST">
+    {% csrf_token %}
+    <div>
+      <input class="text-input" type="email" placeholder="Email">
+    </div>
+    <div>
+      <input class="text-input" type="password" placeholder="Password">
+    </div>
+    <input class="submit-btn" type="submit" value="Login">
+  </form>
+{% endblock %}

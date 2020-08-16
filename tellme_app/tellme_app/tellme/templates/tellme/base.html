@@ -12,16 +12,15 @@
   <div class="container">
     <div class="navbar">
       <ul class="navbar-left">
-        <li><a>Home</a></li>
+        <li><a href="{% url 'tellme:home' %}">Home</a></li>
       </ul>
       <ul class="navbar-right">
-        <li><a>Login</a></li>
-        <li><a>Sign Up</a></li>
+        <li><a href="{% url 'tellme:register' %}">Sign Up</a></li>
+        <li><a href="{% url 'tellme:login' %}">Login</a></li>
       </ul>
     </div>
     <div class="content">
-      <!-- {% block content %}{% endblock %} -->
-      <h1>Sekardayu Hana Pradiani</h1>
+      {% block content %}{% endblock %}
     </div>
   </div>
 </body>
