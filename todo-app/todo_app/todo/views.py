@@ -29,7 +29,6 @@ class CreateTodoView(APIView):
     def get(self, request):
         try:
             todos = Todo.objects.filter(author=request.user)
-            print('todos', todos)
             return Response({
                 'data': TodoSerializer(todos, many=True).data
             })
