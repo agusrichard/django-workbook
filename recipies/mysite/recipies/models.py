@@ -12,14 +12,19 @@ class Restaurant(DateTimeInfo):
     name = models.CharField(max_length=64)
     address = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 class ProductType(models.IntegerChoices):
     FOOD = 1
     BEVERAGES = 2
     OTHERS = 3
 
 class Product(DateTimeInfo):
-
     product_type = models.IntegerField(choices=ProductType.choices)
     name = models.CharField(max_length=128)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
