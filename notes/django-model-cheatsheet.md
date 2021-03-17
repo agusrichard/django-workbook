@@ -9,4 +9,7 @@
 - Many to one relationship use ForeignKey
 - To define many to many relationship you hae to use ManyToManyField in one of two models you defined. It's not important which one have the field, but you have to make sure that only one model has the field.
 - You can also define an intermediary model to connect two models which have many to many relationship, by providing through argument in ManyToManyField.
-- 
+- There are some restrictions when naming a field type.
+- You can define a custom field if you can not field the field you need.
+- You can add custom methods to model. It's is a good thing if you also define the string representation of your model (\__str\__)
+- Model methods that you can customize such as save, delete.
