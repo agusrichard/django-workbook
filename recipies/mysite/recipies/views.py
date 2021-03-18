@@ -132,4 +132,4 @@ class UserList(generics.ListAPIView):
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    serializer_clas = UserSerializer
+    serializer_class = UserSerializer

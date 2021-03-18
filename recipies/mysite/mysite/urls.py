@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from . import views
+
 urlpatterns = [
-    path('', include('recipies.urls')),
+    path('', views.api_root),
+    path('api/', include('recipies.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls'))
 ]

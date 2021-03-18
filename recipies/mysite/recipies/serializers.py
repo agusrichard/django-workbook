@@ -61,9 +61,9 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ['id', 'name', 'restaurant', 'product_type', 'created_date', 'updated_date']
 
-class UserSerializer(serializers.ModelSerializer):
-    restaurants = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    restaurants = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='restaurant_detail')
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'username', 'email', 'restaurants']
