@@ -1,10 +1,13 @@
 from django.http import Http404
-from rest_framework import status, generics, mixins
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.contrib.auth.models import User
+from rest_framework import status, generics, mixins
 
 from .models import Restaurant, Product
-from .serializers import RestaurantSerializer, ProductSerializer
+from .permissions import IsOwnerOrReadOnly
+from .serializers import RestaurantSerializer, ProductSerializer, UserSerializer
 
 # @api_view(['GET', 'POST'])
 # def restaurants_list(request, format=None):
@@ -48,6 +51,10 @@ from .serializers import RestaurantSerializer, ProductSerializer
 class RestaurantList(generics.ListCreateAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 # @api_view(['GET', 'PUT', 'DELETE'])
@@ -116,3 +123,13 @@ class RestaurantList(generics.ListCreateAPIView):
 class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_clas = UserSerializer

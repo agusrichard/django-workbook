@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class DateTimeInfo(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
@@ -11,6 +12,7 @@ class DateTimeInfo(models.Model):
 class Restaurant(DateTimeInfo):
     name = models.CharField(max_length=64)
     address = models.TextField()
+    owner = models.ForeignKey(User, related_name='restaurants', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

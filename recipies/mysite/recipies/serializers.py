@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
 from .models import Restaurant, ProductType, Product
 
@@ -49,11 +50,20 @@ from .models import Restaurant, ProductType, Product
 #         return instance
 
 class RestaurantSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Restaurant
-        fields = ['id', 'name', 'address', 'created_date', 'updated_date']
+        fields = ['id', 'name', 'address', 'created_date', 'updated_date', 'owner']
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'restaurant', 'product_type', 'created_date', 'updated_date']
+
+class UserSerializer(serializers.ModelSerializer):
+    restaurants = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']
