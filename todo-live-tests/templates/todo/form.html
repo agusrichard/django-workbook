@@ -1,0 +1,14 @@
+<form method="POST">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    {{ form.username }}
+    <p class="text-danger error-msg">{{ form.username.errors.as_text }}</p>
+  </div>
+  <div class="mb-4">
+    <label for="password" class="form-label">Password</label>
+    {{ form.password }}
+    <p class="text-danger error-msg">{{ form.password.errors.as_text }}</p>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

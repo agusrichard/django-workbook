@@ -1,0 +1,21 @@
+.navbar-link {
+  color: #fff;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-link:hover {
+  color: #222;
+  border-radius: 5px;
+  outline: solid 2px #222;
+}
+
+.form-container {
+  width: 35vw;
+}
+
+.error-msg {
+  font-size: 0.8rem;
+}

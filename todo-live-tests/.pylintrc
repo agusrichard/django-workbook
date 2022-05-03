@@ -1,0 +1,10 @@
+[MASTER]
+disable=
+    C0114, # missing-module-docstring
+    C0115, # missing-class-docstring
+    C0116, # missing-function-docstring
+    E1101, # no-member
+    C0415, # import outside top-level package
+    c0103, # invalid-name
+    W0703, # broad-except
+    R0903, # too-few-public-methods
