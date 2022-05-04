@@ -19,3 +19,12 @@
 .error-msg {
   font-size: 0.8rem;
 }
+
+.create-todo-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.create-todo-link:hover {
+  color: #fff;
+}

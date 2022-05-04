@@ -2,10 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
-from .forms import UserForm
+from .models import Todo
+from .forms import UserForm, TodoForm
+
+HOME_URL = "todo:home"
 
 
 def home(request):
+    if request.user.is_authenticated:
+        todos = Todo.objects.filter(user=request.user)
+        return render(request, "todo/home.html", {"todos": todos})
+
     return render(request, "todo/home.html")
 
 
@@ -28,14 +35,13 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
-            return redirect("todo:home")
-        else:
-            return render(
-                request, "todo/login.html", {"error": "Invalid username or password."}
-            )
-    else:
-        form = UserForm()
+            return redirect(HOME_URL)
 
+        return render(
+            request, "todo/login.html", {"error": "Invalid username or password."}
+        )
+
+    form = UserForm()
     return render(request, "todo/login.html", {"form": form})
 
 
@@ -43,3 +49,49 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect("todo:login")
+
+
+@login_required
+def create_todo(request):
+    if request.method == "POST":
+        data = request.POST.copy()
+        data["user"] = request.user
+        form = TodoForm(data)
+        if form.is_valid():
+            form.save()
+            return redirect(HOME_URL)
+    else:
+        form = TodoForm()
+
+    return render(request, "todo/create_todo.html", {"form": form})
+
+
+@login_required
+def edit_todo(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    if request.method == "POST":
+        data = request.POST.copy()
+        data["user"] = request.user
+        form = TodoForm(data, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect(HOME_URL)
+    else:
+        form = TodoForm(instance=todo)
+
+    return render(request, "todo/edit_todo.html", {"form": form})
+
+
+@login_required
+def delete_todo(_, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.delete()
+    return redirect(HOME_URL)
+
+
+@login_required
+def toggle_todo(_, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.completed = not todo.completed
+    todo.save()
+    return redirect(HOME_URL)

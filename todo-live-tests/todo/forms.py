@@ -9,6 +9,11 @@ class TodoForm(ModelForm):
         model = Todo
         fields = "__all__"
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["title"].widget.attrs.update({"class": "form-control"})
+        self.fields["description"].widget.attrs.update({"class": "form-control"})
+
 
 class UserForm(ModelForm):
     class Meta:

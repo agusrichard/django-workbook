@@ -25,6 +25,7 @@ class TestUserForm(TestCase):
     def test_negative_register_empty_username_error_message(self):
         form = UserForm(data={"username": "", "password": "testpassword"})
         self.assertEqual(form.errors["username"][0], REQUIRED_FIELD_ERROR)
+        self.assertFalse("password" in form.errors)
 
     def test_negative_register_empty_password_is_valid(self):
         form = UserForm(data={"username": "testuser", "password": ""})
@@ -33,6 +34,7 @@ class TestUserForm(TestCase):
     def test_negative_register_empty_password_error_message(self):
         form = UserForm(data={"username": "testuser", "password": ""})
         self.assertEqual(form.errors["password"][0], REQUIRED_FIELD_ERROR)
+        self.assertFalse("username" in form.errors)
 
     def test_positive_register_valid_data(self):
         form = UserForm(data={"username": "testuser", "password": "testpassword"})
