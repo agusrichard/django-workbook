@@ -27,7 +27,3 @@ class UserForm(ModelForm):
         if commit:
             user.save()
         return user
-
-    def login(self):
-        user = super().instance
-        print("user", user)
