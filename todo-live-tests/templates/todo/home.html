@@ -8,7 +8,7 @@
         <h1 class="text-center">Todo List</h1>
         <form action="{% url 'todo:create_todo' %}" method="GET">
           {% csrf_token %}
-          <button type="submit" class="btn btn-primary">Create Todo</button>
+          <button id="create-todo-btn" type="submit" class="btn btn-primary">Create Todo</button>
         </form>
       </div>
       <div class="accordion mt-3" id="accordion-div">
@@ -18,9 +18,9 @@
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ todo.id }}" aria-expanded="true" aria-controls="collapse-{{ todo.id }}">
                 <div class="me-3">
                   {% if todo.completed %}
-                    <img src="{% static 'todo/checked.png' %}" alt="checked" width="20" height="20" />
+                    <img id="todo-status" src="{% static 'todo/checked.png' %}" alt="checked" width="20" height="20" />
                   {% else %}
-                    <img src="{% static 'todo/unchecked.png' %}" alt="unchecked" width="20" height="20" />
+                    <img id="todo-status" src="{% static 'todo/unchecked.png' %}" alt="unchecked" width="20" height="20" />
                   {% endif %}
                 </div>
                 <span class="ml-2">{{ todo.title }}</span>

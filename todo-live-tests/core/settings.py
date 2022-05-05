@@ -126,4 +126,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Redirect to login page if user's trying to access a page without being logged in
 LOGIN_URL = "/auth/login/"
+
+# Provide path to your downloaded chromedriver to run end-to-end / functional tests
+WEB_DRIVER_PATH = os.path.join(BASE_DIR, "driver", "chromedriver.exe")
+
+# Run tests in headless mode
+WEB_DRIVER_HEADLESS = True

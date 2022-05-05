@@ -11,7 +11,7 @@ HOME_URL = "todo:home"
 
 def home(request):
     if request.user.is_authenticated:
-        todos = Todo.objects.filter(user=request.user)
+        todos = Todo.objects.filter(user=request.user).order_by("-created_at")
         return render(request, "todo/home.html", {"todos": todos})
 
     return render(request, "todo/home.html")
