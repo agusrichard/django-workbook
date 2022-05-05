@@ -3,7 +3,12 @@
 {% block content %}
   <div class="d-flex justify-content-center mt-5">
     <div class="form-container">
-      <h3 class="text-center mb-3">Edit Todo</h3>
+      <div class="d-flex justify-content-between">
+        <h3 class="text-center mb-3">Edit Todo</h3>
+        <form action="{% url 'todo:home' %}" >
+          <button class="btn btn-secondary">Back</button>
+        </form>
+      </div>
       <form method="POST">
         {% csrf_token %}
         <div class="mb-3">

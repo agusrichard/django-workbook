@@ -54,6 +54,17 @@ class TestUserForm(TestCase):
         self.assertEqual(user.username, "testuser")
         self.assertTrue(user.check_password("testpassword"))
 
+    def test_register_user_check_username_already_exists(self):
+        form = UserForm(data={"username": "testuser", "password": "testpassword"})
+        user = form.save()
+        self.assertIsInstance(user, User)
+
+        form = UserForm(data={"username": "testuser", "password": "testpassword"})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(
+            form.errors["username"][0], "A user with that username already exists."
+        )
+
 
 class TestTodoForm(TestCase):
     def setUp(self) -> None:

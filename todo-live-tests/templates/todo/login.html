@@ -4,6 +4,12 @@
   <div class="d-flex justify-content-center mt-5">
     <div class="form-container">
       <h1>Login</h1>
+      {% if error %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endif %}
       {% include 'todo/form.html' %}
     </div>
   </div>

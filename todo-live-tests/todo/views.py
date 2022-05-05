@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 
 from .models import Todo
 from .forms import UserForm, TodoForm
+from .common import get_object_or_none
 
 HOME_URL = "todo:home"
 
@@ -37,8 +38,11 @@ def login(request):
             auth_login(request, user)
             return redirect(HOME_URL)
 
+        form = UserForm()
         return render(
-            request, "todo/login.html", {"error": "Invalid username or password."}
+            request,
+            "todo/login.html",
+            {"error": "Invalid username or password.", "form": form},
         )
 
     form = UserForm()
@@ -68,7 +72,10 @@ def create_todo(request):
 
 @login_required
 def edit_todo(request, todo_id):
-    todo = Todo.objects.get(id=todo_id)
+    todo = get_object_or_none(Todo, todo_id)
+    if todo is None:
+        return redirect(HOME_URL)
+
     if request.method == "POST":
         data = request.POST.copy()
         data["user"] = request.user
@@ -84,14 +91,20 @@ def edit_todo(request, todo_id):
 
 @login_required
 def delete_todo(_, todo_id):
-    todo = Todo.objects.get(id=todo_id)
+    todo = get_object_or_none(Todo, todo_id)
+    if todo is None:
+        return redirect(HOME_URL)
+
     todo.delete()
     return redirect(HOME_URL)
 
 
 @login_required
 def toggle_todo(_, todo_id):
-    todo = Todo.objects.get(id=todo_id)
+    todo = get_object_or_none(Todo, todo_id)
+    if todo is None:
+        return redirect(HOME_URL)
+
     todo.completed = not todo.completed
     todo.save()
     return redirect(HOME_URL)
