@@ -10,7 +10,9 @@
 This project serves as coding material for Medium's article.  The article itself talks about multi-layered tests in Django and how to achieve 100% test coverage. It starts with testing models, forms, views, urls, and up to writing end-to-end tests using Selenium Web Driver.
 
 ## GIF of what you'll see on this app
-Placeholder
+https://user-images.githubusercontent.com/51517401/167233815-689a91d1-b303-4abc-853b-9778f887f576.mp4
+
+
 
 ## Installation/Development
 - Clone/Download this repository and change directory to this project
