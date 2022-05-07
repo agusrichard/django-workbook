@@ -13,7 +13,7 @@ This project serves as coding material for Medium's article.  The article itself
 
 
 ## What you'll see on this app
-https://user-images.githubusercontent.com/51517401/167233815-689a91d1-b303-4abc-853b-9778f887f576.mp4
+https://user-images.githubusercontent.com/51517401/167234128-7a132f13-efdb-497a-bccb-071642fba659.mp4
 
 
 ## Installation/Development
