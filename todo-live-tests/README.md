@@ -1,16 +1,20 @@
-<center><h1>Todo Project Fully Tested</h1></center>
+# Todo Project Fully Tested
+
 
 ### Table of Contents:
 - [Description](#description)
-- [GIF of what you'll see on this app](#gif-of-what-youll-see-on-this-app)
+- [What you'll see on this app](#what-youll-see-on-this-app)
 - [Installation/Development](#installationdevelopment)
 - [Running Tests](#running-tests)
+
 
 ## Description
 This project serves as coding material for Medium's article.  The article itself talks about multi-layered tests in Django and how to achieve 100% test coverage. It starts with testing models, forms, views, urls, and up to writing end-to-end tests using Selenium Web Driver.
 
-## GIF of what you'll see on this app
-Placeholder
+
+## What you'll see on this app
+https://user-images.githubusercontent.com/51517401/167234128-7a132f13-efdb-497a-bccb-071642fba659.mp4
+
 
 ## Installation/Development
 - Clone/Download this repository and change directory to this project
