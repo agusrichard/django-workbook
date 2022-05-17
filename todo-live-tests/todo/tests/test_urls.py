@@ -1,7 +1,16 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 
-from ..views import home, register, login, logout
+from ..views import (
+    home,
+    login,
+    logout,
+    register,
+    edit_todo,
+    create_todo,
+    delete_todo,
+    toggle_todo,
+)
 
 
 class TestUserUrl(SimpleTestCase):
@@ -23,4 +32,18 @@ class TestUserUrl(SimpleTestCase):
 
 
 class TestTodoUrl(SimpleTestCase):
-    pass
+    def test_create_todo_url_is_resolved(self):
+        url = reverse("todo:create_todo")
+        self.assertEqual(resolve(url).func, create_todo)
+
+    def test_edit_todo_url_is_resolved(self):
+        url = reverse("todo:edit_todo", kwargs={"todo_id": 1})
+        self.assertEqual(resolve(url).func, edit_todo)
+
+    def test_delete_todo_url_is_resolved(self):
+        url = reverse("todo:delete_todo", kwargs={"todo_id": 1})
+        self.assertEqual(resolve(url).func, delete_todo)
+
+    def test_toggle_todo_url_is_resolved(self):
+        url = reverse("todo:toggle_todo", kwargs={"todo_id": 1})
+        self.assertEqual(resolve(url).func, toggle_todo)

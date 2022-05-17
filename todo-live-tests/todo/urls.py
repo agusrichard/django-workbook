@@ -2,11 +2,11 @@ from django.urls import path
 
 from .views import (
     home,
-    register,
     login,
     logout,
-    create_todo,
+    register,
     edit_todo,
+    create_todo,
     delete_todo,
     toggle_todo,
 )
