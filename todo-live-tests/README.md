@@ -9,7 +9,10 @@
 
 
 ## Description
-This project serves as coding material for Medium's article.  The article itself talks about multi-layered tests in Django and how to achieve 100% test coverage. It starts with testing models, forms, views, urls, and up to writing end-to-end tests using Selenium Web Driver.
+This project serves as coding material for Medium's article here:
+> https://levelup.gitconnected.com/writing-tests-for-a-foolproof-django-project-3c5527bd602d
+
+The article itself talks about multi-layered tests in Django and how to achieve 100% test coverage. It starts with testing models, forms, views, urls, and up to writing end-to-end tests using Selenium Web Driver.
 
 
 ## What you'll see on this app
