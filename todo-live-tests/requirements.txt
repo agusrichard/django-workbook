@@ -10,7 +10,7 @@ colorama==0.4.4
 coverage==6.3.2
 cryptography==37.0.2
 dill==0.3.4
-Django==4.0.4
+Django==4.0.7
 h11==0.13.0
 idna==3.3
 isort==5.10.1
